@@ -19,5 +19,9 @@ from django.urls import path, include
 urlpatterns = [
     path('app/admin/', admin.site.urls),
     path('', include('todo.urls')),
+    path('auth/', include('authentication.urls')),
     
 ]
+
+handler404 = 'helpers.views.handle_not_found_page'
+handler500 = 'helpers.views.handle_server_error'

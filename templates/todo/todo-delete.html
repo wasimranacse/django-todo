@@ -1,0 +1,29 @@
+{% extends "__partials/base.html" %}
+
+{% block blockname %}
+<div class="jumbotron card card-image"
+    style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/gradient12.webp);">
+    <div class="text-white text-center py-5 px-4">
+        <div>
+            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Delete Todo?</strong></h2>
+        </div>
+    </div>
+</div>
+<div class="container pb-5">
+    <div class="card text-center">
+        <div class="card-header">
+            <h2>{{ todo.title }}</h2>
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">Are you sure you want to delete this todo?</h2>
+            <p class="card-text">This action can't be undone!</p>
+            <form method="POST" action="{% url 'todo-delete' todo.id %}">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-danger" value="Yes">
+                <a href="{% url 'todo' todo.id %}" class="btn btn-primary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock blockname %}

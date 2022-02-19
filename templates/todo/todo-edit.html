@@ -1,0 +1,21 @@
+{% extends "__partials/base.html" %}
+
+{% block blockname %}
+<div class="jumbotron card card-image"
+    style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/gradient12.webp);">
+    <div class="text-white text-center py-5 px-4">
+        <div>
+            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Edit TODO</strong></h2>
+        </div>
+    </div>
+</div>
+<div class="container pb-5">
+    <form method="POST" class="ui form" action="{% url 'todo-edit' todo.id %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="btn btn-primary" type="submit" value="Save" />
+    </form>
+</div>
+
+
+{% endblock blockname %}

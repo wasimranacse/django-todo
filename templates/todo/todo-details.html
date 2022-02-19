@@ -1,0 +1,35 @@
+{% extends "__partials/base.html" %}
+
+{% load static %}
+
+{% block blockname %}
+<div class="jumbotron card card-image"
+    style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/gradient12.webp);">
+    <div class="text-white text-center py-5 px-4">
+        <div>
+            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Todo Detail</strong></h2>
+        </div>
+    </div>
+</div>
+<div class="container pb-5">
+    <div class="card text-center">
+        <div class="card-header">
+            <h2>{{ todo.title }}</h2>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ todo.created_at }}</h5>
+            <p class="card-text">{{ todo.description }}</p>
+            <a href="{% url 'todo-edit' todo.id %}" class="btn btn-primary">EDIT TODO</a>
+            <a href="{% url 'todo-delete' todo.id %}" class="btn btn-danger">DELETE TODO</a>
+        </div>
+        <div class="card-footer text-muted">
+            {% if todo.is_completed %}
+                <i class="far fa-check-circle"></i> Completed at {{ todo.updated_at }}
+            {% else %}
+                <p><i class="far fa-times-circle"></i> Not completed yet</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock blockname %}

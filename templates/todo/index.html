@@ -1,0 +1,70 @@
+{% extends "__partials/base.html" %}
+{% load static %}
+
+{% block blockname %}
+    <div class="jumbotron card card-image"
+        style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/gradient12.webp);">
+        <div class="text-white text-center py-5 px-4">
+            <div>
+                <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Create your Easy TODO List with
+                        Our APP</strong></h2>
+                <p class="mx-5 mb-5">All Todo</p>
+                <a class="btn btn-outline-white btn-md"><i class="fas fa-clone left"></i> TODO LIST</a>
+            </div>
+        </div>
+    </div>
+    <div class="container pb-5">
+        <h1 class="ui header">My Todo List</h1>
+        {% if all_todo %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th><b>Title</b></th>
+                    <th><b>Description</b></th>
+                    <th><b>Completed Status</b></th>
+                    <th><b>Action</b></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in all_todo %}
+                  <tr>
+                      <td>{{ todo.title }}</td>
+                    <td>{{ todo.description }}</td>
+                    <td>
+                    {% if todo.is_completed %}
+                        Completed <i class="far fa-check-circle"></i>
+                    {% else %}
+                        Pending <i class="far fa-times-circle"></i>
+                    </td>
+                    {% endif %}
+                    <td>
+                        <a class="ui button" href="{% url 'todo' todo.pk %}"><i class="eye icon"></i></a>
+                        <a class="ui button" href="{% url 'todo-edit' todo.pk %}"><i class="pencil icon"></i></a>
+                    </td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>
+                        <a href="?filter=all"><b>All - ({{ all_count }})</b></a>
+                    </th>
+                    <th>
+                        <a href="?filter=incompleted"><b>Remaining - ({{ incompleted_count }})</b></a>
+                    </th>
+                    <th>
+                        <a href="?filter=completed"><b>Completed - ({{ completed_count }})</b></a>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+        {% else %}
+          <div class="ui message">
+              <div class="header">
+                  No items yet
+              </div>
+              <p>You can create your first Todo here <a href="{% url 'create-todo' %}">Create One</a></p>
+          </div>
+        {% endif %}
+    </div>
+{% endblock blockname %}
