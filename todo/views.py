@@ -7,8 +7,6 @@ from .models import Todo
 from django.urls import reverse
 
 # Show the completed, incompleted and remaining todos
-
-
 def get_todos_filter(request, all_todos):
     if request.GET and request.GET.get('filter'):
         if request.GET.get('filter') == 'completed':
@@ -80,5 +78,5 @@ def edit_todo(request, id):
         todo.is_completed = True if is_completed == "on" else False
         todo.save()
         return HttpResponseRedirect(reverse('todo', kwargs={'id': todo.pk}))
-        
+
     return render(request, 'todo/todo-edit.html', context)
