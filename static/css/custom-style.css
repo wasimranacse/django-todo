@@ -1,3 +1,9 @@
 a.navbar-brand.custom-design img {
     width: 130px !important;
 }
+
+/* .navbar .dropdown-menu {
+    position: absolute !important;
+    margin-top: 0;
+    width: 45% !important;
+} */

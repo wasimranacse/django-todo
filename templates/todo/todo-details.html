@@ -1,5 +1,9 @@
 {% extends "__partials/base.html" %}
 
+{% block title %}
+Todo - {{todo.title}}
+{% endblock title %}
+
 {% load static %}
 
 {% block blockname %}
@@ -12,6 +16,7 @@
     </div>
 </div>
 <div class="container pb-5">
+    {% include "__partials/messages.html" %}
     <div class="card text-center">
         <div class="card-header">
             <h2>{{ todo.title }}</h2>

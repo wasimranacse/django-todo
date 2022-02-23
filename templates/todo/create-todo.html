@@ -1,7 +1,10 @@
 {% extends "__partials/base.html" %}
 
-{% load static %}
+{% block title %}
+Cteate Todo - Todo Web App
+{% endblock title %}
 
+{% load static %}
 
 {% block blockname %}
 <div class="jumbotron card card-image"
@@ -14,12 +17,12 @@
     </div>
 </div>
 <div class="container pb-5">
+    {% include "__partials/messages.html" %}
     <form class="ui form" action="{% url 'create-todo' %}" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input class="btn btn-primary" type="submit" value="Submit"/>
     </form>
 </div>
-
 
 {% endblock blockname %}

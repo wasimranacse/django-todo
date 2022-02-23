@@ -1,72 +1,51 @@
 {% extends "__partials/base.html" %}
 
+{% block title %}
+Login - Todo Web App
+{% endblock title %}
+
 {% load static %}
 
-
 {% block blockname %}
-<div class="jumbotron card card-image"
-    style="background-image: url(https://mdbcdn.b-cdn.net/img/Photos/Others/gradient12.webp);">
-    <div class="text-white text-center py-5 px-4">
-        <div>
-            <h2 class="card-title h1-responsive pt-3 mb-5 font-bold"><strong>Login TODO APP</strong></h2>
-        </div>
-    </div>
-</div>
 
-<div class="container pb-5">
-    <form>
-        <!-- Email input -->
-        <div class="form-outline mb-4">
-            <input type="email" id="form2Example1" class="form-control" />
-            <label class="form-label" for="form2Example1">Email address</label>
-        </div>
-    
-        <!-- Password input -->
-        <div class="form-outline mb-4">
-            <input type="password" id="form2Example2" class="form-control" />
-            <label class="form-label" for="form2Example2">Password</label>
-        </div>
-    
-        <!-- 2 column grid layout for inline styling -->
-        <div class="row mb-4">
-            <div class="col d-flex justify-content-center">
-                <!-- Checkbox -->
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="form2Example34" checked />
-                    <label class="form-check-label" for="form2Example34"> Remember me </label>
+<section class="vh-80" style="background-color: #508bfc;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card shadow-2-strong" style="border-radius: 1rem;">
+
+                    <form method="post" action="{% url 'login' %}" class="card-body p-5 text-center">
+                        {% csrf_token %}
+                        <h2 class="text-uppercase text-center mb-5">Login Todo App</h2>
+                        {% include "__partials/messages.html" %}
+                        <div class="form-outline mb-4">
+                            <input type="username" required name="username" placeholder="Username" value="{{ data.username }}" class="form-control form-control-lg" />
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="password" required name="password" placeholder="Password" class="form-control form-control-lg" />
+                        </div>
+
+                        <!-- Checkbox -->
+                        <div class="form-check d-flex justify-content-start mb-4">
+                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                            <label class="form-check-label" for="form1Example3"> Remember password</label>
+                        </div>
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                        <label class="pt-3"> Don't have an account? <a href="{% url 'register' %}">Sign Up</a></label>
+                        <!-- <hr class="my-4"> 
+                        <label> OR </label>
+                        <button class="btn btn-small btn-block btn-primary mb-2" style="background-color: #dd4b39;"
+                            type=""><i class="fab fa-google me-2"></i> Sign in with google</button>
+
+                        <button class="btn btn-small btn-block btn-primary mb-2" style="background-color: #3b5998;"
+                            type=""><i class="fab fa-facebook-f me-2"></i> Sign in with facebook</button> -->
+                    </form>
                 </div>
             </div>
-    
-            <div class="col">
-                <!-- Simple link -->
-                <a href="#!">Forgot password?</a>
-            </div>
         </div>
-    
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-    
-        <!-- Register buttons -->
-        <div class="text-center">
-            <p>Not a member? <a href="#!">Register</a></p>
-            <p>or sign up with:</p>
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-facebook-f"></i>
-            </button>
-    
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-google"></i>
-            </button>
-    
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-twitter"></i>
-            </button>
-    
-            <button type="button" class="btn btn-primary btn-floating mx-1">
-                <i class="fab fa-github"></i>
-            </button>
-        </div>
-    </form>
-</div>
+    </div>
+</section>
 
 {% endblock blockname %}
