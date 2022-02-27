@@ -119,6 +119,22 @@ USE_I18N = True
 
 USE_TZ = True
 
+# User Email Configuration
+EMAIL_FROM_USER = os.environ.get('EMAIL_FROM_USER')
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'wasimrana063@gmail.com'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+
+# User Email Verification Configuration
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_FROM_USER = os.environ.get('EMAIL_FROM_USER')
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'wasimrana063@gmail.com'
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
